@@ -1,39 +1,21 @@
 #include "main.h"
 
 /**
- * cap_string - capitalize all words of a string
- * @str: string
- * Return: `str`
+ * string_toupper - Change all lowercase letters to uppercase
+ * @c: string
+ * Return: c
  */
 
-char *cap_string(char *str)
+char *string_toupper(char *c)
 {
-	int i, c;
-	int trigger;
-	char nots[] = ",;.!?(){}\n\t\" ";
+	int i;
 
-	for (i = 0, trigger = 0; str[i] != '\0'; i++)
+	for (i = 0; c[i] != '\0'; i++)
 	{
-		if (str[0] > 96 && str[0] < 123)
-			trigger = 1;
-		for (c = 0; nots[c] != '\0'; c++)
+		if (c[i] > 96 && c[i] < 123)
 		{
-			if (nots[c] == str[i])
-				trigger = 1;
-		}
-
-		if (trigger)
-		{
-			if (str[i] > 96 && str[i] < 123)
-			{
-				str[i] -= 32;
-				trigger = 0;
-			}
-			else if (str[i] > 64 && str[i] < 91)
-				trigger = 0;
-			else if (str[i] > 47 && str[i] < 58)
-				trigger = 0;
+			c[i] -= 32;
 		}
 	}
-	return (str);
+	return (c);
 }
