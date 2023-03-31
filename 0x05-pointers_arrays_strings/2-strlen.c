@@ -3,12 +3,12 @@
  * @s: arg 1.
  * Return: the length of a string.
  */
-int _strlen(char *N)
+int _strlen(char *s)
 {
-	int	A;
+	int	i;
 
-	A = 0;
-	while (N[A])
-		A++;
-	return (A);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
