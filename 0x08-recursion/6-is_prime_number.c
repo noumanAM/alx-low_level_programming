@@ -1,32 +1,30 @@
 #include "main.h"
 
-int actual_prime(int n, int i);
-
 /**
- * is_prime_number - says if an integer is a prime number or not
- * @n: number to evaluate
- *
- * Return: 1 if n is a prime number, 0 if not
+ * is_prime_number2 -  function that returns 1 if the
+ * input integer is a prime number, otherwise return 0.mber.
+ * @x: Arg 1.
+ * @y: Arg 1.
+ * Return: 1 or 0;
  */
-int is_prime_number(int n)
+int is_prime_number2(int x, int y)
 {
-	if (n <= 1)
+	if (y > x / y)
+		return (1);
+	if (x % y == 0)
 		return (0);
-	return (actual_prime(n, n - 1));
+	return (is_prime_number2(x, y + 1));
 }
 
 /**
- * actual_prime - calculates if a number is prime recursively
- * @n: number to evaluate
- * @i: iterator
- *
- * return: 1 if n is prime, 0 if not
+ * is_prime_number -  function that returns 1 if the
+ * input integer is a prime number, otherwise return 0.mber.
+ * @x: Arg 1.
+ * Return: 1 or 0;
  */
-int actual_prime(int n, int i)
+int is_prime_number(int x)
 {
-	if (i == 1)
-		return (1);
-	if (n % i == 0 && i > 0)
+	if (x < 0 || x == 1)
 		return (0);
-	return (actual_prime(n, i - 1));
+	return (is_prime_number2(x, 2));
 }
