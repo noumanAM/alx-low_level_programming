@@ -1,52 +1,68 @@
 #include "main.h"
-#include <stdlib.h>
-#include <stdio.h>
+
 /**
-  *str_concat - concatenates 2 strings.
-  * a NULL string is treated as an empty string.
-  *@s1: pointer to string.
-  *@s2: pointer to string.
-  *
-  *Return: pointer to newly allocated memory which
-  *has s1, s2 and null byte.
-  *NULL on failure.
-  */
-char *str_concat(char *s1, char *s2)
+ * _strdup - function that returns a pointer
+ * to a newly allocated space in memory, which
+ * contains a copy of the string given as a parameter.
+ * @str: Arg 1.
+ * Return: Returns a pointer to the array.
+ */
+char	*_strdup(char *str)
 {
-	unsigned int len1, len2, size, i, j;
-	char *nstr;
+	char	*str1;
+	size_t	i;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-
-	len1 = 0;
-	while (s1[len1] != '\0')
-		len1++;
-	len2 = 0;
-	while (s2[len2] != '\0')
-		len2++;
-
-	size = len1 + len2;
-
-	nstr = malloc((sizeof(char) * size) + 1);
-	/*check if malloc was successful */
-	if (nstr == NULL)
-		return (NULL);
-
+	if (!str)
+		return (0);
+	str1 = malloc(strlen(str) + 1);
 	i = 0;
-	while (i < len1)
+	if (!str1)
+		return (0);
+	while (i < strlen(str))
 	{
-		nstr[i] = s1[i];
+		str1[i] = str[i];
 		i++;
 	}
-	j = 0;
-	while (i <= size)
+	str1[strlen(str)] = '\0';
+	return (str1);
+}
+
+/**
+ * str_concat - function that concatenates two strings.
+ * @s1: Arg 1.
+ * @s2: Arg 1.
+ * Return: Returns a pointer to the array.
+ */
+char	*str_concat(char *s1, char *s2)
+{
+	char	*str1;
+	size_t	i;
+	size_t	t;
+
+	if (!s1 && !s2)
+		return (_strdup(""));
+	if (!s1)
+		return (_strdup(s2));
+	if (!s2)
+		return (_strdup(s1));
+	str1 = malloc(strlen(s1) + strlen(s2) + 1);
+	i = 0;
+	t = 0;
+	if (!str1)
+		return (0);
+	while (t < strlen(s1))
 	{
-		nstr[i] = s2[j];
+		str1[i] = s1[t];
 		i++;
-		j++;
+		t++;
 	}
-	return (nstr);
+	t = 0;
+	while (t < strlen(s2))
+	{
+		str1[i] = s2[t];
+		i++;
+		t++;
+	}
+	str1[strlen(s1) + strlen(s2)] = '\0';
+	return (str1);
 }
