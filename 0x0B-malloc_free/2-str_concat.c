@@ -4,28 +4,28 @@
 /**
   *str_concat - concatenates 2 strings.
   * a NULL string is treated as an empty string.
-  *@S1: pointer to string.
-  *@S2: pointer to string.
+  *@s1: pointer to string.
+  *@s2: pointer to string.
   *
   *Return: pointer to newly allocated memory which
-  *has S1, S2 and null byte.
+  *has s1, s2 and null byte.
   *NULL on failure.
   */
-char *str_concat(char *S1, char *S2)
+char *str_concat(char *s1, char *s2)
 {
-	unsigned int len1, len2, size, K, F;
+	unsigned int len1, len2, size, i, j;
 	char *nstr;
 
-	if (S1 == NULL)
-		S1 = "";
-	if (S2 == NULL)
-		S2 = "";
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 
 	len1 = 0;
-	while (S1[len1] != '\0')
+	while (s1[len1] != '\0')
 		len1++;
 	len2 = 0;
-	while (S2[len2] != '\0')
+	while (s2[len2] != '\0')
 		len2++;
 
 	size = len1 + len2;
@@ -35,18 +35,18 @@ char *str_concat(char *S1, char *S2)
 	if (nstr == NULL)
 		return (NULL);
 
-	K = 0;
-	while (k < len1)
+	i = 0;
+	while (i < len1)
 	{
-		nstr[K] = S1[K];
-		K++;
+		nstr[i] = s1[i];
+		i++;
 	}
-	F = 0;
-	while (k <= size)
+	j = 0;
+	while (i <= size)
 	{
-		nstr[K] = S2[F];
-		K++;
-		F++;
+		nstr[i] = s2[j];
+		i++;
+		j++;
 	}
 	return (nstr);
 }
