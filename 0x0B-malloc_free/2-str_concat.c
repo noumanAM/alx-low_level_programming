@@ -36,13 +36,13 @@ char *str_concat(char *S1, char *S2)
 		return (NULL);
 
 	K = 0;
-	while (K < len1)
+	while (k < len1)
 	{
 		nstr[K] = S1[K];
 		K++;
 	}
 	F = 0;
-	while (K <= size)
+	while (k <= size)
 	{
 		nstr[K] = S2[F];
 		K++;
